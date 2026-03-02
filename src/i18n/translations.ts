@@ -142,6 +142,29 @@ const en = {
     sectionLabel: "What Our Clients Say",
     heading: 'Testimonials',
     subheading: "Don't just take our word for it — here's what Singapore's top kitchens have to say.",
+    items: [
+      {
+        quote: "Ah Yeow has been our go-to supplier for dried seafood and preserved goods for years. The quality is consistently excellent and delivery is always on time.",
+        name: "Replace with name",
+        title: "Head Chef",
+        company: "Replace with restaurant/hotel name",
+        rating: 5,
+      },
+      {
+        quote: "We've tried other suppliers but none can match the range and quality of specialty Chinese products that Ah Yeow carries. Their team is knowledgeable and always helpful.",
+        name: "Replace with name",
+        title: "Owner",
+        company: "Replace with business name",
+        rating: 5,
+      },
+      {
+        quote: "As a catering company handling large events, reliability is everything. Ah Yeow has never let us down — orders are accurate, deliveries are punctual, and the pricing is fair.",
+        name: "Replace with name",
+        title: "Operations Manager",
+        company: "Replace with company name",
+        rating: 5,
+      },
+    ],
   },
   contact: {
     sectionLabel: 'Get In Touch',
@@ -327,6 +350,29 @@ const zh: typeof en = {
     sectionLabel: '客户怎么说',
     heading: '客户评价',
     subheading: '不只是我们说——听听新加坡顶尖厨房的心声。',
+    items: [
+      {
+        quote: "亚耀多年来一直是我们干货海鲜及腌制食品的首选供应商。品质始终如一，送货准时。",
+        name: "请填写姓名",
+        title: "主厨",
+        company: "请填写餐馆/酒店名称",
+        rating: 5,
+      },
+      {
+        quote: "我们试过其他供应商，但没有一家能比得上亚耀所提供的中式特色产品的种类和品质。他们的团队知识渊博，服务周到。",
+        name: "请填写姓名",
+        title: "负责人",
+        company: "请填写公司名称",
+        rating: 5,
+      },
+      {
+        quote: "作为承接大型活动的餐饮公司，可靠性至关重要。亚耀从未让我们失望——订单准确，送货准时，定价合理。",
+        name: "请填写姓名",
+        title: "运营经理",
+        company: "请填写公司名称",
+        rating: 5,
+      },
+    ],
   },
   contact: {
     sectionLabel: '联系我们',

@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import type { Locale, Translations } from '../i18n/translations';
 import Navbar       from "./Navbar.astro";
 import Hero         from "./Hero.astro";
 import Stats        from "./Stats.astro";
@@ -10,19 +11,26 @@ import Fleet        from "./Fleet.astro";
 import Testimonials from "./Testimonials.astro";
 import Contact      from "./Contact.astro";
 import Footer       from "./Footer.astro";
+
+interface Props {
+  t: Translations;
+  lang: Locale;
+}
+
+const { t, lang } = Astro.props;
 ---
 
-<Navbar />
+<Navbar t={t.navbar} lang={lang} />
 
 <main>
-  <Hero />
-  <Stats />
-  <About />
-  <Products />
-  <Clients />
-  <Fleet />
-  <Testimonials />
-  <Contact />
+  <Hero         t={t.hero} />
+  <Stats        t={t.stats} />
+  <About        t={t.about} />
+  <Products     t={t.products} />
+  <Clients      t={t.clients} />
+  <Fleet        t={t.fleet} />
+  <Testimonials t={t.testimonials} />
+  <Contact      t={t.contact} />
 </main>
 
-<Footer />
+<Footer t={t.footer} lang={lang} />

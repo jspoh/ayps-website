@@ -1,12 +1,26 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-import Landing from '../components/landing.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Root page: detect browser language and redirect to /en/ or /zh/
+// Falls back to /en/ for non-Chinese browsers.
 ---
 
-<Layout>
-	<Landing />
-</Layout>
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ah Yeow Provision Supply</title>
+    <!-- Fallback for JS-disabled browsers -->
+    <meta http-equiv="refresh" content="0;url=/en/" />
+  </head>
+  <body>
+    <script is:inline>
+      (function () {
+        var lang = (navigator.language || navigator.languages?.[0] || '').toLowerCase();
+        if (lang.startsWith('zh')) {
+          window.location.replace('/zh/');
+        } else {
+          window.location.replace('/en/');
+        }
+      })();
+    </script>
+  </body>
+</html>

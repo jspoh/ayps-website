@@ -1,4 +1,12 @@
 ---
+import type { Locale, Translations } from '../i18n/translations';
+
+interface Props {
+  t: Translations['navbar'];
+  lang: Locale;
+}
+
+const { t } = Astro.props;
 ---
 
 <header id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-red-900 shadow-lg transition-all duration-300">
@@ -15,15 +23,19 @@
       </a>
 
       <!-- Desktop Nav -->
-      <div class="hidden md:flex items-center gap-7">
-        <a href="#about"        class="text-red-100 hover:text-white text-sm font-medium transition-colors duration-200">About</a>
-        <a href="#products"     class="text-red-100 hover:text-white text-sm font-medium transition-colors duration-200">Products</a>
-        <a href="#clients"      class="text-red-100 hover:text-white text-sm font-medium transition-colors duration-200">Our Clients</a>
-        <a href="#fleet"        class="text-red-100 hover:text-white text-sm font-medium transition-colors duration-200">Delivery</a>
-        <a href="#testimonials" class="text-red-100 hover:text-white text-sm font-medium transition-colors duration-200">Testimonials</a>
+      <div class="hidden md:flex items-center gap-6">
+        <a href="#about"        class="text-red-100 hover:text-white text-sm font-medium transition-colors duration-200">{t.about}</a>
+        <a href="#products"     class="text-red-100 hover:text-white text-sm font-medium transition-colors duration-200">{t.products}</a>
+        <a href="#clients"      class="text-red-100 hover:text-white text-sm font-medium transition-colors duration-200">{t.clients}</a>
+        <a href="#fleet"        class="text-red-100 hover:text-white text-sm font-medium transition-colors duration-200">{t.delivery}</a>
+        <a href="#testimonials" class="text-red-100 hover:text-white text-sm font-medium transition-colors duration-200">{t.testimonials}</a>
+        <a href={t.langToggleHref}
+           class="text-red-200 hover:text-white text-sm font-medium transition-colors duration-200 border border-red-700 hover:border-white px-3 py-1 rounded">
+          {t.langToggle}
+        </a>
         <a href="#contact"
            class="bg-amber-500 hover:bg-amber-400 text-white px-5 py-2 rounded font-semibold text-sm transition-colors duration-200 shadow">
-          Get a Quote
+          {t.cta}
         </a>
       </div>
 
@@ -41,14 +53,18 @@
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden border-t border-red-800 py-4">
       <div class="flex flex-col gap-1">
-        <a href="#about"        class="text-red-100 hover:text-white hover:bg-red-800 px-3 py-2 rounded text-sm font-medium transition-colors">About</a>
-        <a href="#products"     class="text-red-100 hover:text-white hover:bg-red-800 px-3 py-2 rounded text-sm font-medium transition-colors">Products</a>
-        <a href="#clients"      class="text-red-100 hover:text-white hover:bg-red-800 px-3 py-2 rounded text-sm font-medium transition-colors">Our Clients</a>
-        <a href="#fleet"        class="text-red-100 hover:text-white hover:bg-red-800 px-3 py-2 rounded text-sm font-medium transition-colors">Delivery</a>
-        <a href="#testimonials" class="text-red-100 hover:text-white hover:bg-red-800 px-3 py-2 rounded text-sm font-medium transition-colors">Testimonials</a>
+        <a href="#about"        class="text-red-100 hover:text-white hover:bg-red-800 px-3 py-2 rounded text-sm font-medium transition-colors">{t.about}</a>
+        <a href="#products"     class="text-red-100 hover:text-white hover:bg-red-800 px-3 py-2 rounded text-sm font-medium transition-colors">{t.products}</a>
+        <a href="#clients"      class="text-red-100 hover:text-white hover:bg-red-800 px-3 py-2 rounded text-sm font-medium transition-colors">{t.clients}</a>
+        <a href="#fleet"        class="text-red-100 hover:text-white hover:bg-red-800 px-3 py-2 rounded text-sm font-medium transition-colors">{t.delivery}</a>
+        <a href="#testimonials" class="text-red-100 hover:text-white hover:bg-red-800 px-3 py-2 rounded text-sm font-medium transition-colors">{t.testimonials}</a>
+        <a href={t.langToggleHref}
+           class="text-red-200 hover:text-white hover:bg-red-800 px-3 py-2 rounded text-sm font-medium transition-colors border border-red-700 text-center">
+          {t.langToggle}
+        </a>
         <a href="#contact"
            class="bg-amber-500 hover:bg-amber-400 text-white px-4 py-2 rounded font-semibold text-sm transition-colors text-center mt-2">
-          Get a Quote
+          {t.cta}
         </a>
       </div>
     </div>
@@ -68,7 +84,6 @@
     iconClose?.classList.toggle('hidden', isOpen);
   });
 
-  // Close mobile menu when a link is clicked
   menu?.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       menu.classList.add('hidden');

@@ -1,81 +1,56 @@
 ---
-const features = [
-  {
-    title: "In-House Fleet",
-    desc: "Our own dedicated delivery vehicles — no third-party logistics, no middlemen. Every delivery is handled directly by our team.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg>`,
-  },
-  {
-    title: "Island-Wide Coverage",
-    desc: "We deliver across all of Singapore — from the East Coast to the West, North to South, including industrial estates and city-centre kitchens.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>`,
-  },
-  {
-    title: "Reliable Scheduling",
-    desc: "Flexible delivery windows to suit your kitchen schedule. We work around your operations — not the other way around.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
-  },
-  {
-    title: "Careful Handling",
-    desc: "Products are properly packed and secured for transit. Dry goods, delicate dried seafood, and fragile items arrive in perfect condition.",
-    icon: `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>`,
-  },
-];
+import type { Translations } from '../i18n/translations';
 
-const fleetStats = [
-  { value: "6",    label: "Delivery Vehicles" },
-  { value: "Mon–Sat", label: "Delivery Days" },
-  { value: "Same-Day", label: "Order Cut-Off*" },
-  { value: "All 28", label: "Districts Covered" },
+interface Props {
+  t: Translations['fleet'];
+}
+
+const { t } = Astro.props;
+
+const featureIcons = [
+  `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg>`,
+  `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>`,
+  `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
+  `<svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>`,
 ];
 ---
 
 <section id="fleet" class="py-20 bg-zinc-900">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <!-- Section header -->
     <div class="text-center mb-14">
-      <p class="text-amber-400 font-bold text-sm uppercase tracking-widest mb-3">Our Delivery Fleet</p>
+      <p class="text-amber-400 font-bold text-sm uppercase tracking-widest mb-3">{t.sectionLabel}</p>
       <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4">
-        Dependable Delivery,<br />
-        <span class="text-amber-400">Every Single Time</span>
+        {t.heading}<br />
+        <span class="text-amber-400">{t.headingAccent}</span>
       </h2>
-      <p class="text-zinc-400 text-lg max-w-2xl mx-auto">
-        We operate our own in-house fleet to ensure your orders reach you on time, in full, and in
-        perfect condition — consistently.
-      </p>
+      <p class="text-zinc-400 text-lg max-w-2xl mx-auto">{t.subheading}</p>
     </div>
 
     <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
 
       <!-- Fleet image placeholder -->
       <div>
-        <!-- ============================================================
-             PLACEHOLDER: Replace with photo(s) of your delivery trucks/vans.
-             Recommended: 800×500px, showing fleet in front of shop or on road.
-        ============================================================ -->
-        <div class="aspect-[16/10] bg-zinc-800 border-2 border-dashed border-zinc-600 rounded-2xl flex items-center justify-center text-zinc-500 text-sm font-medium">
+        <div class="aspect-16/10 bg-zinc-800 border-2 border-dashed border-zinc-600 rounded-2xl flex items-center justify-center text-zinc-500 text-sm font-medium">
           [ Delivery Fleet Photo ]
         </div>
-
-        <!-- Fleet stats row -->
         <div class="grid grid-cols-4 gap-3 mt-4">
-          {fleetStats.map(s => (
+          {t.stats.map(s => (
             <div class="bg-zinc-800 rounded-lg p-3 text-center">
               <div class="text-amber-400 font-extrabold text-base leading-tight">{s.value}</div>
               <div class="text-zinc-400 text-xs mt-1">{s.label}</div>
             </div>
           ))}
         </div>
-        <p class="text-zinc-600 text-xs mt-2">* Same-day delivery subject to order time and availability. Contact us for details.</p>
+        <p class="text-zinc-600 text-xs mt-2">{t.footNote}</p>
       </div>
 
       <!-- Features list -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        {features.map(f => (
+        {t.features.map((f, i) => (
           <div class="flex gap-4 items-start group">
-            <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-red-900/50 border border-red-800/50 flex items-center justify-center text-amber-400 group-hover:bg-red-900 transition-colors duration-300"
-                 set:html={f.icon} />
+            <div class="shrink-0 w-12 h-12 rounded-xl bg-red-900/50 border border-red-800/50 flex items-center justify-center text-amber-400 group-hover:bg-red-900 transition-colors duration-300"
+                 set:html={featureIcons[i]} />
             <div>
               <h3 class="text-white font-semibold mb-1">{f.title}</h3>
               <p class="text-zinc-400 text-sm leading-relaxed">{f.desc}</p>
@@ -86,14 +61,11 @@ const fleetStats = [
 
     </div>
 
-    <!-- Bottom CTA -->
     <div class="text-center border-t border-zinc-800 pt-10">
-      <p class="text-zinc-400 mb-5 text-base">
-        Ready to set up a regular delivery account for your business?
-      </p>
+      <p class="text-zinc-400 mb-5 text-base">{t.ctaNote}</p>
       <a href="#contact"
          class="inline-block bg-amber-500 hover:bg-amber-400 text-white px-9 py-3 rounded-lg font-bold transition-colors duration-200 shadow-lg">
-        Arrange a Delivery
+        {t.cta}
       </a>
     </div>
 

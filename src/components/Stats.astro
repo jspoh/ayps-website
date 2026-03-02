@@ -1,42 +1,29 @@
 ---
-// Calculate years in service since 28 November 1994
-const founded   = new Date(1994, 10, 28); // month is 0-indexed
-const now       = new Date();
-const yearsRaw  = (now.getTime() - founded.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
-const years     = Math.floor(yearsRaw);
+import type { Translations } from '../i18n/translations';
 
-const stats = [
-  {
-    value: `${years}+`,
-    label: "Years in Service",
-    sub: "Established 28 Nov 1994",
-    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
-  },
-  {
-    value: "1,000+",
-    label: "Products Stocked",
-    sub: "Dried goods & provisions",
-    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>`,
-  },
-  {
-    value: "500+",
-    label: "Business Clients",
-    sub: "Restaurants, hotels & more",
-    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>`,
-  },
-  {
-    value: "5×",
-    label: "Weekly Deliveries",
-    sub: "Island-wide coverage",
-    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg>`,
-  },
+interface Props {
+  t: Translations['stats'];
+}
+
+const { t } = Astro.props;
+
+const founded  = new Date(1994, 10, 28);
+const now      = new Date();
+const years    = Math.floor((now.getTime() - founded.getTime()) / (1000 * 60 * 60 * 24 * 365.25));
+
+const icons = [
+  `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
+  `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"/></svg>`,
+  `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-2 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>`,
+  `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"/></svg>`,
 ];
+
+const values = [`${years}+`, '1,000+', '500+', '5×'];
 ---
 
 <section class="bg-red-900 py-14">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <!-- Divider -->
     <div class="flex items-center justify-center gap-4 mb-10">
       <div class="h-px w-16 bg-red-700"></div>
       <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">By The Numbers</span>
@@ -44,12 +31,12 @@ const stats = [
     </div>
 
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4">
-      {stats.map((stat, i) => (
-        <div class={`text-center group ${i < stats.length - 1 ? 'lg:border-r lg:border-red-700' : ''}`}>
+      {t.map((stat, i) => (
+        <div class={`text-center group ${i < t.length - 1 ? 'lg:border-r lg:border-red-700' : ''}`}>
           <div class="flex justify-center mb-3 text-amber-400/60 group-hover:text-amber-400 transition-colors duration-300"
-               set:html={stat.icon} />
+               set:html={icons[i]} />
           <div class="text-4xl md:text-5xl font-extrabold text-amber-400 mb-1 tabular-nums">
-            {stat.value}
+            {values[i]}
           </div>
           <div class="text-white font-semibold text-base md:text-lg mb-1">
             {stat.label}

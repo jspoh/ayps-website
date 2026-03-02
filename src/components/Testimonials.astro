@@ -1,25 +1,33 @@
 ---
-// Replace these with real testimonials when you collect them.
+import type { Translations } from '../i18n/translations';
+
+interface Props {
+  t: Translations['testimonials'];
+}
+
+const { t } = Astro.props;
+
+// Replace with real testimonials when collected
 const testimonials = [
   {
-    quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ah Yeow has been our go-to supplier for dried seafood and preserved goods for years. The quality is consistently excellent and delivery is always on time.",
-    name: "Lorem Ipsum",
+    quote: "Ah Yeow has been our go-to supplier for dried seafood and preserved goods for years. The quality is consistently excellent and delivery is always on time.",
+    name: "—",
     title: "Head Chef",
-    company: "Restaurant / Hotel Name",
+    company: "Restaurant / Hotel",
     rating: 5,
   },
   {
-    quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. We've tried other suppliers but none can match the range and quality of specialty Chinese products that Ah Yeow carries. Their team is knowledgeable and always helpful.",
-    name: "Lorem Ipsum",
+    quote: "We've tried other suppliers but none can match the range and quality of specialty Chinese products that Ah Yeow carries. Their team is knowledgeable and always helpful.",
+    name: "—",
     title: "Owner",
-    company: "F&B Business Name",
+    company: "F&B Business",
     rating: 5,
   },
   {
-    quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. As a catering company handling large events, reliability is everything. Ah Yeow has never let us down — orders are accurate, deliveries are punctual, and the pricing is fair.",
-    name: "Lorem Ipsum",
+    quote: "As a catering company handling large events, reliability is everything. Ah Yeow has never let us down — orders are accurate, deliveries are punctual, and the pricing is fair.",
+    name: "—",
     title: "Operations Manager",
-    company: "Catering Company Name",
+    company: "Catering Company",
     rating: 5,
   },
 ];
@@ -28,27 +36,18 @@ const testimonials = [
 <section id="testimonials" class="py-20 bg-stone-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <!-- Section header -->
     <div class="text-center mb-14">
-      <p class="text-red-700 font-bold text-sm uppercase tracking-widest mb-3">What Our Clients Say</p>
-      <h2 class="text-3xl md:text-4xl font-extrabold text-zinc-900 mb-4">
-        Testimonials
-      </h2>
-      <p class="text-zinc-500 text-lg max-w-xl mx-auto">
-        Don't just take our word for it — here's what Singapore's top kitchens have to say.
-      </p>
+      <p class="text-red-700 font-bold text-sm uppercase tracking-widest mb-3">{t.sectionLabel}</p>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-zinc-900 mb-4">{t.heading}</h2>
+      <p class="text-zinc-500 text-lg max-w-xl mx-auto">{t.subheading}</p>
     </div>
 
-    <!-- Testimonial cards -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       {testimonials.map(t => (
         <div class="bg-white rounded-2xl p-8 shadow-sm border border-stone-100 flex flex-col">
-          <!-- Quote mark -->
-          <svg class="w-10 h-10 text-red-800/20 mb-4 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+          <svg class="w-10 h-10 text-red-800/20 mb-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">
             <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
           </svg>
-
-          <!-- Stars -->
           <div class="flex gap-1 mb-4">
             {Array.from({ length: t.rating }).map(() => (
               <svg class="w-4 h-4 text-amber-500" fill="currentColor" viewBox="0 0 20 20">
@@ -56,20 +55,10 @@ const testimonials = [
               </svg>
             ))}
           </div>
-
-          <!-- Quote text -->
-          <p class="text-zinc-600 text-sm leading-relaxed mb-6 flex-grow italic">
-            "{t.quote}"
-          </p>
-
-          <!-- Reviewer -->
+          <p class="text-zinc-600 text-sm leading-relaxed mb-6 flex-grow italic">"{t.quote}"</p>
           <div class="flex items-center gap-3 pt-4 border-t border-stone-100">
-            <!-- ============================================================
-                 PLACEHOLDER: Replace with reviewer's photo if available.
-                 e.g. <img src="/testimonials/reviewer.jpg" alt="..." class="w-10 h-10 rounded-full object-cover" />
-            ============================================================ -->
-            <div class="w-10 h-10 rounded-full bg-red-100 border border-red-200 flex items-center justify-center text-red-700 font-bold text-sm flex-shrink-0">
-              {t.name.charAt(0)}
+            <div class="w-10 h-10 rounded-full bg-red-100 border border-red-200 flex items-center justify-center text-red-700 font-bold text-sm shrink-0">
+              A
             </div>
             <div>
               <div class="font-semibold text-zinc-900 text-sm">{t.name}</div>

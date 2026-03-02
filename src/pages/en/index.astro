@@ -1,0 +1,11 @@
+---
+import { translations } from '../../i18n/translations';
+import Layout from '../../layouts/Layout.astro';
+import Landing from '../../components/landing.astro';
+
+const t = translations.en;
+---
+
+<Layout lang="en" seo={t.seo}>
+  <Landing t={t} lang="en" />
+</Layout>

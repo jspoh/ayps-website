@@ -1,71 +1,58 @@
 ---
+import type { Translations } from '../i18n/translations';
+
+interface Props {
+  t: Translations['hero'];
+}
+
+const { t } = Astro.props;
 ---
 
 <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
 
-  <!-- ============================================================
-       BACKGROUND — replace the gradient div below with an <img>
-       or set a CSS background-image once you have the hero photo.
-       Recommended: wide shot of shop interior or product spread.
-  ============================================================ -->
-  <div class="absolute inset-0 bg-gradient-to-br from-red-950 via-red-900 to-red-800">
-    <!-- [ PLACEHOLDER: Hero background image ] -->
-  </div>
-
-  <!-- Dark overlay for text readability -->
+  <div class="absolute inset-0 bg-linear-to-br from-red-950 via-red-900 to-red-800"></div>
   <div class="absolute inset-0 bg-black/50"></div>
-
-  <!-- Decorative pattern overlay -->
   <div class="absolute inset-0 opacity-5"
        style="background-image: repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%); background-size: 20px 20px;">
   </div>
 
-  <!-- Content -->
   <div class="relative z-10 text-center text-white px-4 max-w-4xl mx-auto pt-20">
 
-    <!-- Logo mark -->
     <div class="flex justify-center mb-6">
       <div class="bg-white/10 backdrop-blur-sm rounded-full p-4 border border-white/20">
         <img src="/logo.png" alt="Ah Yeow Provision Supply" class="h-20 w-auto drop-shadow-xl" />
       </div>
     </div>
 
-    <!-- Chinese name -->
     <p class="text-amber-400 text-xl md:text-2xl font-medium tracking-widest mb-2">
       亚耀土产供应
     </p>
 
-    <!-- English name -->
     <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight tracking-tight">
       Ah Yeow<br />
       <span class="text-amber-400">Provision Supply</span>
     </h1>
 
-    <!-- Tagline -->
     <p class="text-lg md:text-xl text-red-100 max-w-2xl mx-auto mb-3 leading-relaxed">
-      Singapore's trusted wholesale supplier of dried goods, rice, cooking oil,
-      sugar, salt and traditional Chinese provisions.
+      {t.tagline}
     </p>
 
-    <!-- Since year -->
     <p class="text-amber-400 font-semibold tracking-widest text-sm md:text-base uppercase mb-10">
-      ✦ Serving Singapore Since 1994 ✦
+      ✦ {t.since} ✦
     </p>
 
-    <!-- CTAs -->
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
       <a href="#contact"
          class="bg-amber-500 hover:bg-amber-400 text-white px-9 py-4 rounded-lg font-bold text-lg transition-all duration-200 shadow-xl hover:shadow-amber-500/30 hover:-translate-y-0.5">
-        Enquire Now
+        {t.ctaEnquire}
       </a>
       <a href="#about"
          class="border-2 border-white/60 hover:border-white text-white hover:bg-white/10 px-9 py-4 rounded-lg font-semibold text-lg transition-all duration-200">
-        Learn More
+        {t.ctaLearn}
       </a>
     </div>
   </div>
 
-  <!-- Scroll indicator -->
   <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50 animate-bounce">
     <span class="text-xs uppercase tracking-widest">Scroll</span>
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

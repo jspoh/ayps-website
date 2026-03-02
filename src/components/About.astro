@@ -1,31 +1,29 @@
 ---
+import type { Translations } from '../i18n/translations';
 import shopfront from '../assets/shopfront.png';
-const founded  = new Date(1994, 10, 28);
-const years    = Math.floor((new Date().getTime() - founded.getTime()) / (1000 * 60 * 60 * 24 * 365.25));
+
+interface Props {
+  t: Translations['about'];
+}
+
+const { t } = Astro.props;
+
+const founded = new Date(1994, 10, 28);
+const years   = Math.floor((new Date().getTime() - founded.getTime()) / (1000 * 60 * 60 * 24 * 365.25));
 ---
 
 <section id="about" class="py-20 bg-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
     <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
       <!-- Image column -->
       <div class="order-2 lg:order-1">
         <div class="relative">
-          <!-- Main image — shopfront -->
-          <!-- ============================================================
-               PLACEHOLDER: Replace with actual shopfront / shop interior photo.
-               Recommended size: 800×600px or similar 4:3 ratio.
-          ============================================================ -->
           <img src={shopfront.src} alt="Ah Yeow Provision Supply shopfront" class="aspect-4/3 w-full object-cover rounded-2xl" />
-
-          <!-- Floating accent card -->
           <div class="absolute -bottom-6 -right-6 bg-red-900 text-white rounded-xl p-5 shadow-2xl">
             <div class="text-3xl font-extrabold text-amber-400 leading-none">{years}+</div>
             <div class="text-xs font-semibold uppercase tracking-wider mt-1 text-red-200">Years of Trust</div>
           </div>
-
-          <!-- Decorative dot grid -->
           <div class="absolute -top-4 -left-4 w-24 h-24 opacity-20"
                style="background-image: radial-gradient(circle, #991b1b 1.5px, transparent 1.5px); background-size: 10px 10px;">
           </div>
@@ -34,32 +32,18 @@ const years    = Math.floor((new Date().getTime() - founded.getTime()) / (1000 *
 
       <!-- Text column -->
       <div class="order-1 lg:order-2">
-        <p class="text-red-700 font-bold text-sm uppercase tracking-widest mb-3">Who We Are</p>
+        <p class="text-red-700 font-bold text-sm uppercase tracking-widest mb-3">{t.sectionLabel}</p>
         <h2 class="text-3xl md:text-4xl font-extrabold text-zinc-900 mb-6 leading-tight">
-          Singapore's Neighbourhood<br />
-          <span class="text-red-800">Provision Partner</span>
+          {t.heading}<br />
+          <span class="text-red-800">{t.headingAccent}</span>
         </h2>
-        <p class="text-zinc-600 text-base md:text-lg leading-relaxed mb-5">
-          Founded in 1994, Ah Yeow Provision Supply (亚耀土产供应) has been a cornerstone of Singapore's food supply
-          chain for over three decades. What began as a humble provision shop at Serangoon has grown into one of
-          Singapore's most trusted wholesale suppliers of Chinese dried goods and specialty food products.
-        </p>
-        <p class="text-zinc-600 text-base leading-relaxed mb-8">
-          We carry an extraordinary selection of Chinese food supplies — from dried seafood and preserved vegetables to
-          old-school tidbits and festive provisions that you simply won't find on supermarket shelves. Whether you run a
-          restaurant, coffee shop, caterer, or hotel kitchen, we have what you need.
-        </p>
+        <p class="text-zinc-600 text-base md:text-lg leading-relaxed mb-5">{t.para1}</p>
+        <p class="text-zinc-600 text-base leading-relaxed mb-8">{t.para2}</p>
 
-        <!-- Feature highlights -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-          {[
-            { title: "Wholesale Pricing",  desc: "Competitive bulk rates for business clients" },
-            { title: "Specialist Stock",   desc: "Rare & traditional products not found in supermarkets" },
-            { title: "Reliable Supply",    desc: "Consistent stock replenishment you can count on" },
-            { title: "Personal Service",   desc: "Decades of expertise from our experienced team" },
-          ].map(f => (
+          {t.features.map(f => (
             <div class="flex gap-3 items-start">
-              <div class="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-amber-500 flex items-center justify-center">
+              <div class="mt-1 shrink-0 w-5 h-5 rounded-full bg-amber-500 flex items-center justify-center">
                 <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
                 </svg>
@@ -74,7 +58,7 @@ const years    = Math.floor((new Date().getTime() - founded.getTime()) / (1000 *
 
         <a href="#contact"
            class="inline-block bg-red-800 hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-200 shadow-md">
-          Get in Touch
+          {t.cta}
         </a>
       </div>
 

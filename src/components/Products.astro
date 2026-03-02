@@ -1,81 +1,49 @@
 ---
-const categories = [
-  {
-    title: "Rice (Bulk & Wholesale)",
-    desc: "AAA Golden Eagle Thai fragrant rice, Thailand organic brown rice, Flying Man crystalline rice — available in 25kg sacks. Jasmine rice, glutinous rice and rice flour also in stock.",
-    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7h16M4 12h16M4 17h7"/></svg>`,
-  },
-  {
-    title: "Dried Seafood",
-    desc: "Indonesia ikan bilis (small & large), dried shrimp (虾米), premium meat shrimp, Japan dried scallops (干贝), Japan whitebait, seaweed (紫菜) and canned abalone in brine.",
-    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-2-2m0 0l-2 2m2-2v10a2 2 0 01-2 2H8a2 2 0 01-2-2V5a2 2 0 012-2h8l2 2z"/></svg>`,
-  },
-  {
-    title: "Dried Mushrooms & Fungi",
-    desc: "Japan small flower mushroom (日本小花菇), shredded shiitake (香菇丝), white fungus (白木耳), mini black fungus (小木耳) — for soups, braised dishes and zi char.",
-    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="1.5"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h8M12 8v8"/></svg>`,
-  },
-  {
-    title: "Spices & Seasonings",
-    desc: "Star anise (八角), cinnamon (桂皮), cloves (丁香), black cardamon (草果), BABA curry powder, belacan (峇拉煎), white pepper powder, Ajinomoto MSG (味精) — essential for hawker and restaurant kitchens.",
-    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>`,
-  },
-  {
-    title: "Condiments & Cooking Sauces",
-    desc: "Maggi stock (汤), Lao Gan Ma (老干妈), Cheong Chan cooking caramel, A1 Ba Ku Teh soup spices, EL chili paste, Heng's crispy fish/prawn chili, Golden Carp kaya, cooking lime juice.",
-    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>`,
-  },
-  {
-    title: "Soup Ingredients & Herbs",
-    desc: "Red dates (红枣), dried lily (百合), daylily (金针), Chinese yam (淮山), goji berries (枸杞), ginkgo nuts (白果), lotus seeds (莲子), assam skin — ready for BKT, tong sui and herbal soups.",
-    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h18v4H3zM3 7v13a1 1 0 001 1h16a1 1 0 001-1V7"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 11h6"/></svg>`,
-  },
-  {
-    title: "Noodles, Tofu Skin & Dry Goods",
-    desc: "A1 rice vermicelli, Egret Brans rice sticks, Shandong China vermicelli, vegetable noodles, square & broken tofu skin (豆支), Yuri panko bread crumbs, tapioca starch, corn flour.",
-    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6l3 3m0 0l3-3m-3 3V2"/></svg>`,
-  },
-  {
-    title: "Preserved Vegetables & Sugar",
-    desc: "Twin Rabbit china radish (菜脯碎), Sichuan pickled mustard greens (榨菜), rock sugar (冰糖), black/red sugar, maltose (麦芽糖), raw cane sugar, Ayam Brand sardines, fried dace (豆豉鲮鱼).",
-    icon: `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>`,
-  },
+import type { Translations } from '../i18n/translations';
+
+interface Props {
+  t: Translations['products'];
+}
+
+const { t } = Astro.props;
+
+const icons = [
+  `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7h16M4 12h16M4 17h7"/></svg>`,
+  `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-2-2m0 0l-2 2m2-2v10a2 2 0 01-2 2H8a2 2 0 01-2-2V5a2 2 0 012-2h8l2 2z"/></svg>`,
+  `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke-width="1.5"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h8M12 8v8"/></svg>`,
+  `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>`,
+  `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>`,
+  `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h18v4H3zM3 7v13a1 1 0 001 1h16a1 1 0 001-1V7"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 11h6"/></svg>`,
+  `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 15.546c-.523 0-1.046.151-1.5.454a2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.704 2.704 0 00-3 0 2.704 2.704 0 01-3 0 2.701 2.701 0 00-1.5-.454M9 6l3 3m0 0l3-3m-3 3V2"/></svg>`,
+  `<svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>`,
 ];
 ---
 
 <section id="products" class="py-20 bg-stone-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-    <!-- Section header -->
     <div class="text-center mb-14">
-      <p class="text-red-700 font-bold text-sm uppercase tracking-widest mb-3">What We Carry</p>
-      <h2 class="text-3xl md:text-4xl font-extrabold text-zinc-900 mb-4">
-        Our Product Categories
-      </h2>
-      <p class="text-zinc-500 text-lg max-w-2xl mx-auto">
-        Wholesale provisions for restaurants, coffee shops, hawker stalls and caterers.
-        Over 1,000 products — from bulk rice and dried seafood to spices, sauces and soup ingredients.
-      </p>
+      <p class="text-red-700 font-bold text-sm uppercase tracking-widest mb-3">{t.sectionLabel}</p>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-zinc-900 mb-4">{t.heading}</h2>
+      <p class="text-zinc-500 text-lg max-w-2xl mx-auto">{t.subheading}</p>
     </div>
 
-    <!-- Product grid -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      {categories.map(cat => (
+      {t.categories.map((cat, i) => (
         <div class="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300 border border-stone-100 group">
           <div class="text-red-800 mb-4 group-hover:text-amber-600 transition-colors duration-300"
-               set:html={cat.icon} />
+               set:html={icons[i]} />
           <h3 class="font-bold text-zinc-900 text-base mb-2">{cat.title}</h3>
           <p class="text-zinc-500 text-sm leading-relaxed">{cat.desc}</p>
         </div>
       ))}
     </div>
 
-    <!-- CTA strip -->
     <div class="mt-12 text-center">
-      <p class="text-zinc-500 mb-4">Don't see what you're looking for? We likely have it in stock.</p>
+      <p class="text-zinc-500 mb-4">{t.ctaNote}</p>
       <a href="#contact"
          class="inline-block border-2 border-red-800 text-red-800 hover:bg-red-800 hover:text-white px-8 py-3 rounded-lg font-semibold transition-all duration-200">
-        Ask About Specific Products
+        {t.cta}
       </a>
     </div>
 

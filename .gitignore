@@ -1,5 +1,5 @@
 # build output
-dist/
+# dist/     # vps only has 1 vcpu lol
 
 # generated types
 .astro/
@@ -22,3 +22,6 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+.vscode/
+__pycache__/

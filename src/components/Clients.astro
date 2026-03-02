@@ -1,0 +1,75 @@
+---
+// Placeholder client slots — replace each item with a real <img> once you have client logos.
+// Recommended: transparent PNG logos, ~240×80px, on white/light background.
+const clients = [
+  { label: "Client Logo 1",  hint: "e.g. Restaurant / Hotel" },
+  { label: "Client Logo 2",  hint: "e.g. Caterer" },
+  { label: "Client Logo 3",  hint: "e.g. Coffee Shop Chain" },
+  { label: "Client Logo 4",  hint: "e.g. Hotel" },
+  { label: "Client Logo 5",  hint: "e.g. Food Manufacturer" },
+  { label: "Client Logo 6",  hint: "e.g. Supermarket" },
+  { label: "Client Logo 7",  hint: "e.g. Restaurant Group" },
+  { label: "Client Logo 8",  hint: "e.g. Catering Company" },
+  { label: "Client Logo 9",  hint: "e.g. Food Court Operator" },
+  { label: "Client Logo 10", hint: "e.g. Institution" },
+  { label: "Client Logo 11", hint: "e.g. Airline Caterer" },
+  { label: "Client Logo 12", hint: "e.g. Event Caterer" },
+];
+
+const sectors = [
+  { icon: "🍜", label: "Restaurants & Eateries" },
+  { icon: "🏨", label: "Hotels & Resorts" },
+  { icon: "🎉", label: "Catering Companies" },
+  { icon: "🏫", label: "Institutions & Schools" },
+  { icon: "✈️", label: "Airline Caterers" },
+  { icon: "🍱", label: "Food Manufacturers" },
+];
+---
+
+<section id="clients" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Section header -->
+    <div class="text-center mb-14">
+      <p class="text-red-700 font-bold text-sm uppercase tracking-widest mb-3">Our Clientele</p>
+      <h2 class="text-3xl md:text-4xl font-extrabold text-zinc-900 mb-4">
+        Trusted by Singapore's Finest
+      </h2>
+      <p class="text-zinc-500 text-lg max-w-2xl mx-auto">
+        From neighbourhood coffee shops to five-star hotel kitchens, businesses across Singapore
+        rely on Ah Yeow for their provision needs.
+      </p>
+    </div>
+
+    <!-- Client logo grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-16">
+      {clients.map(client => (
+        <div class="group aspect-[3/2] bg-stone-50 border border-stone-200 rounded-xl flex flex-col items-center justify-center gap-1 hover:border-red-200 hover:bg-red-50 transition-all duration-300 cursor-default p-3">
+          <!-- ============================================================
+               PLACEHOLDER: Replace this div with an <img> tag once you
+               have the client's logo file.
+               e.g. <img src="/clients/restaurant-name.png" alt="Restaurant Name" class="max-h-12 max-w-full object-contain grayscale group-hover:grayscale-0 transition-all" />
+          ============================================================ -->
+          <div class="text-stone-300 text-xs font-semibold text-center leading-tight">{client.label}</div>
+          <div class="text-stone-200 text-xs text-center">{client.hint}</div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Sector strip -->
+    <div class="border-t border-stone-100 pt-12">
+      <p class="text-center text-zinc-500 text-sm uppercase tracking-widest font-semibold mb-8">
+        Serving Businesses Across Every Sector
+      </p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+        {sectors.map(s => (
+          <div class="flex flex-col items-center gap-2 text-center">
+            <span class="text-3xl">{s.icon}</span>
+            <span class="text-zinc-600 text-sm font-medium">{s.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>

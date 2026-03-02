@@ -1,0 +1,79 @@
+---
+---
+
+<header id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-red-900 shadow-lg transition-all duration-300">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 lg:h-18">
+
+      <!-- Logo + Brand -->
+      <a href="#hero" class="flex items-center gap-3 flex-shrink-0">
+        <img src="/logo.png" alt="Ah Yeow Provision Supply" class="h-10 w-auto" />
+        <div class="leading-tight">
+          <div class="text-white font-bold text-base tracking-wide">亚耀土产供应</div>
+          <div class="text-red-200 text-xs font-medium tracking-wider uppercase">Provision Supply</div>
+        </div>
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-7">
+        <a href="#about"        class="text-red-100 hover:text-white text-sm font-medium transition-colors duration-200">About</a>
+        <a href="#products"     class="text-red-100 hover:text-white text-sm font-medium transition-colors duration-200">Products</a>
+        <a href="#clients"      class="text-red-100 hover:text-white text-sm font-medium transition-colors duration-200">Our Clients</a>
+        <a href="#fleet"        class="text-red-100 hover:text-white text-sm font-medium transition-colors duration-200">Delivery</a>
+        <a href="#testimonials" class="text-red-100 hover:text-white text-sm font-medium transition-colors duration-200">Testimonials</a>
+        <a href="#contact"
+           class="bg-amber-500 hover:bg-amber-400 text-white px-5 py-2 rounded font-semibold text-sm transition-colors duration-200 shadow">
+          Get a Quote
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <button id="mobile-menu-btn" class="md:hidden text-white p-2 rounded hover:bg-red-800 transition-colors" aria-label="Open menu">
+        <svg id="icon-open"  class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-red-800 py-4">
+      <div class="flex flex-col gap-1">
+        <a href="#about"        class="text-red-100 hover:text-white hover:bg-red-800 px-3 py-2 rounded text-sm font-medium transition-colors">About</a>
+        <a href="#products"     class="text-red-100 hover:text-white hover:bg-red-800 px-3 py-2 rounded text-sm font-medium transition-colors">Products</a>
+        <a href="#clients"      class="text-red-100 hover:text-white hover:bg-red-800 px-3 py-2 rounded text-sm font-medium transition-colors">Our Clients</a>
+        <a href="#fleet"        class="text-red-100 hover:text-white hover:bg-red-800 px-3 py-2 rounded text-sm font-medium transition-colors">Delivery</a>
+        <a href="#testimonials" class="text-red-100 hover:text-white hover:bg-red-800 px-3 py-2 rounded text-sm font-medium transition-colors">Testimonials</a>
+        <a href="#contact"
+           class="bg-amber-500 hover:bg-amber-400 text-white px-4 py-2 rounded font-semibold text-sm transition-colors text-center mt-2">
+          Get a Quote
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  const btn  = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const iconOpen  = document.getElementById('icon-open');
+  const iconClose = document.getElementById('icon-close');
+
+  btn?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden', isOpen);
+    iconOpen?.classList.toggle('hidden', !isOpen);
+    iconClose?.classList.toggle('hidden', isOpen);
+  });
+
+  // Close mobile menu when a link is clicked
+  menu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.add('hidden');
+      iconOpen?.classList.remove('hidden');
+      iconClose?.classList.add('hidden');
+    });
+  });
+</script>

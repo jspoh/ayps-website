@@ -18,6 +18,16 @@ const selfHref = lang === 'en' ? '/en/' : '/zh/';
 <!doctype html>
 <html lang={lang === 'zh' ? 'zh-Hans-SG' : 'en-SG'}>
   <head>
+
+    <script>
+      const pwd = prompt("Enter password:");
+      if (pwd === "loh") {
+        // allowed, do nothing
+      } else {
+        history.length > 1 ? history.back() : window.location.replace("about:blank");
+      }
+    </script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/png" href="/logo.png" />
